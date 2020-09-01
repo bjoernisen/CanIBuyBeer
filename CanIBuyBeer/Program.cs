@@ -8,41 +8,44 @@ namespace CanIBuyBeer
 {
     class Program
     {
-        static bool CanIBuyBeer(int age, string location, string leg, decimal promille);
+        static bool CanIBuyBeers(int age, string location, string leg, decimal promille);
         {
-            if (leg!="j")
+            if (leg !="j")
                 return false;
             if (promille > 1.0m)
 	            return false
+            if (age > 15 && location =="skolan")
+                return true;
             if (age > 17 && location =="krogen")
                 return true;
             if (age > 19 && location =="systemet")
 	            return true; 
             return false;
         }
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Tjena tjena mittbena");
+        Console.Write("Hur gammal är du?: ");
+        int age = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Location, systemet eller krogen?: ");
+        string location = Console.ReadLine().ToLower();
+        Console.Write("Har du leg med dig? (J/N): ");
+        string leg = Console.ReadLine().ToLower();
+        Console.Write("Vilken promillehalt har du?: ");
+        decimal promille = Convert.ToDecimal(Console.ReadLine());
 
-        static void Main(string[] args)
+        CanIBuyBeers();
+
+        if (canIBuyBeer)
         {
-            Console.Write("Hur gammal är du?: ");
-            int age = Convert.ToInt32(Console.ReadLine());
-            Console.Write("Location, systemet eller krogen?: ");
-            string location = Console.ReadLine().ToLower();
-            Console.Write("Har du leg med dig? (J/N): ");
-            string leg = Console.ReadLine().ToLower();
-            Console.Write("Vilken promillehalt har du?: ");
-            decimal promille = Convert.ToDecimal(Console.ReadLine());
-
-            CanIBuyBeer(); 
-            
-            if (canIBuyBeer)
-            {
-                Console.WriteLine("Du får köpa öl");
-            }
-            else
-            {
-                Console.WriteLine("Du får inte köpa öl");
-            }
-            
+            Console.WriteLine("Du får köpa öl");
         }
+        else
+        {
+            Console.WriteLine("Du får INTE köpa öl");
+        }
+
     }
 }
+}
+
