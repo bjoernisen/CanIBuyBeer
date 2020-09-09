@@ -8,12 +8,12 @@ namespace CanIBuyBeer
 {
     class Program
     {
-        static bool CanIBuyBeers(int age, string location, string leg, decimal promille);
+        static bool CanIBuyBeers(int age, string location, string leg, decimal promille)
         {
             if (leg !="j")
                 return false;
             if (promille > 1.0m)
-	            return false
+                return false;
             if (age > 15 && location =="skolan")
                 return true;
             if (age > 17 && location =="krogen")
@@ -34,9 +34,9 @@ namespace CanIBuyBeer
         Console.Write("Vilken promillehalt har du?: ");
         decimal promille = Convert.ToDecimal(Console.ReadLine());
 
-        CanIBuyBeers();
+        bool beer = CanIBuyBeers(age, location, leg, promille);
 
-        if (canIBuyBeer)
+        if (beer == true)
         {
             Console.WriteLine("Du får köpa öl");
         }
@@ -44,7 +44,6 @@ namespace CanIBuyBeer
         {
             Console.WriteLine("Du får INTE köpa öl");
         }
-
     }
 }
 }
